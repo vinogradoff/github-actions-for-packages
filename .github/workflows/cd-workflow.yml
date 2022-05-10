@@ -68,5 +68,5 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tag: 1.0
+        tags: 1.0
 
