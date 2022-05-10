@@ -1,9 +1,7 @@
 name: Docker CD
 
-on:
-  push:
-    paths:
-      - "**Dockerfile**"
+on: push
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -63,10 +61,11 @@ jobs:
       with:
         username: ${{github.actor}}
         password: ${{secrets.GITHUB_TOKEN}}
-        registry: docker.pkg.github.com
+        registry: ghcr.io
     - name: Build container image
       uses: docker/build-push-action@v3
       with:
         push: true
         tags: 1.0
+        context: .
 
